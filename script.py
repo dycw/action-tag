@@ -40,7 +40,7 @@ def main(settings: Settings, /) -> None:
     cmds2 = ["git", "tag", "-a", str(version), "HEAD", "-m", str(version)]
     _LOGGER.info("Running '%s'...", " ".join(cmds2))
     _ = check_call(cmds2)
-    cmds3 = ["git", "push", "--tags", "--force", "--set-upstream", "orogin"]
+    cmds3 = ["git", "push", "--tags", "--force", "--set-upstream", "origin"]
     _LOGGER.info("Running '%s'...", " ".join(cmds3))
     _ = check_call(cmds3)
     _LOGGER.info("Finished")
