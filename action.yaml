@@ -21,12 +21,12 @@ runs:
       with:
         fetch-depth: 0
 
-    - uses: actions/checkout@v6
+    - name: Check out 'dycw/action-tag-commit'
+      uses: actions/checkout@v6
       with:
         repository: "dycw/action-tag-commit"
         fetch-depth: 0
-        with:
-          path: "tag-commit"
+        path: "tag-commit"
 
     - name: Install 'uv'
       uses: astral-sh/setup-uv@v7
