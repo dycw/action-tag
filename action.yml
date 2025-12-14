@@ -1,0 +1,21 @@
+name: tag-commit
+
+inputs:
+  repository:
+    description: Repository Owner and Repository Name
+    default: ${{ github.repository }}
+  token:
+    description: GitHub Personal Access Token
+    default: ${{ github.token }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install 'uv'
+      uses: astral-sh/setup-uv@v7
+
+    - name: Install 'bump-my-version'
+      run: uv tool install bump-my-version
+
+    - name: Run 'script.py'
+      run: uv run script.py
