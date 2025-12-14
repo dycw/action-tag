@@ -22,12 +22,6 @@ runs:
         path: "tmp-tag-commit"
         fetch-depth: 0
 
-    - name: Set up 'git' config
-      run: |
-        git config user.name github-actions-bot
-        git config user.email noreply@github.com
-      shell: bash
-
     - name: Install 'uv'
       uses: astral-sh/setup-uv@v7
 
