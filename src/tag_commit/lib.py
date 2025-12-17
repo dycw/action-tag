@@ -3,15 +3,10 @@ from __future__ import annotations
 from contextlib import suppress
 from logging import getLogger
 from subprocess import CalledProcessError, check_output
-from typing import TYPE_CHECKING
 
 from utilities.version import parse_version
 
 from tag_commit.settings import SETTINGS
-
-if TYPE_CHECKING:
-    from utilities.version import Version
-
 
 _LOGGER = getLogger(__name__)
 
@@ -26,7 +21,7 @@ def tag_commit(
 ) -> None:
     _ = _log_run("git", "config", "--global", "user.name", user_name)
     _ = _log_run("git", "config", "--global", "user.email", user_email)
-    version = _get_version()
+    version = parse_version(_log_run("bump-my-version", "show", "current_version"))
     _tag(str(version))
     if major_minor:
         _tag(f"{version.major}.{version.minor}")
@@ -36,23 +31,11 @@ def tag_commit(
         _tag("latest")
 
 
-def _get_version() -> Version:
-    return parse_version(_log_run("bump-my-version", "show", "current_version"))
-
-
 def _tag(version: str, /) -> None:
-    _delete_tag(version)
-    _add_tag(version)
-
-
-def _delete_tag(version: str, /) -> None:
     with suppress(CalledProcessError):
         _ = _log_run("git", "tag", "--delete", version)
     with suppress(CalledProcessError):
         _ = _log_run("git", "push", "--delete", "origin", version)
-
-
-def _add_tag(version: str, /) -> None:
     _ = _log_run("git", "tag", "-a", version, "HEAD", "-m", version)
     _ = _log_run("git", "push", "--tags", "--force", "--set-upstream", "origin")
 
