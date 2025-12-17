@@ -29,7 +29,7 @@ inputs:
     default: false
 
 runs:
-  using: "composite"
+  using: composite
   steps:
     - name: Check out repo
       uses: actions/checkout@v6
@@ -39,9 +39,9 @@ runs:
     - name: Check out 'dycw/action-tag-commit'
       uses: actions/checkout@v6
       with:
-        repository: "dycw/action-tag-commit"
+        repository: dycw/action-tag-commit
         fetch-depth: 0
-        path: "tag-commit"
+        path: tag-commit
 
     - name: Install 'uv'
       uses: astral-sh/setup-uv@v7
