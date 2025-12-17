@@ -163,6 +163,7 @@ source = { editable = "." }
 dependencies = [
     { name = "click" },
     { name = "dycw-utilities" },
+    { name = "rich" },
     { name = "typed-settings", extra = ["attrs", "click"] },
 ]
 
@@ -176,7 +177,8 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "click", specifier = ">=8.3.1,<8.4" },
-    { name = "dycw-utilities", specifier = ">=0.169.9" },
+    { name = "dycw-utilities", specifier = ">=0.169.9,<0.170" },
+    { name = "rich", specifier = ">=14.2.0,<14.3" },
     { name = "typed-settings", extras = ["attrs", "click"], specifier = ">=25.3.0,<25.4" },
 ]
 
