@@ -35,11 +35,12 @@ repos:
           - --pre-commit--ruff
           - --pre-commit--taplo
           - --pre-commit--uv
-          - --pre-commit--uv--script=script.py
+          - --pyproject
+          - --pyproject--project--name=dycw-tag-commit
           - --pyright
-          - --pyright--include=script.py
+          - --pyright--include=src
           - --pytest
-          - --pytest--test-paths=tests
+          - --pytest--test-paths=src/tests
           - --ruff
         id: nitpick
     repo: https://github.com/dycw/pre-commit-hook-nitpick
