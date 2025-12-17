@@ -3,8 +3,23 @@
   requires = ["uv_build"]
 
 [project]
+  authors = [{ email = "d.wan@icloud.com", name = "Derek Wan" }]
+  dependencies = [
+    "click >=8.3.1, <8.4",
+    "dycw-utilities >=0.169.9",
+    "typed-settings >=25.3.0, <25.4",
+  ]
+  description = "Library to set up cron jobs"
   name = "dycw-tag-commit"
+  readme = "README.md"
   requires-python = ">= 3.14"
+  version = "0.2.0"
 
 [dependency-groups]
   dev = ["dycw-utilities[test]", "rich"]
+
+[tool]
+  [tool.uv]
+    [tool.uv.build-backend]
+      module-name = "tag_commit"
+      module-root = "src"
