@@ -11,5 +11,5 @@
   filterwarnings = ["error"]
   minversion = "9.0"
   strict = true
-  testpaths = ["tests"]
+  testpaths = ["tests", "src/tests"]
   xfail_strict = true

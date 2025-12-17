@@ -12,7 +12,18 @@ jobs:
       - name: Tag latest commit
         uses: dycw/action-tag-commit@latest
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          major-minor: true
-          major: true
           latest: true
+          major: true
+          major-minor: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+  publish:
+    environment:
+      name: pypi
+    needs:
+      - tag
+    permissions:
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Python package and upload distribution
+        uses: dycw/action-uv-publish@latest

@@ -9,8 +9,6 @@ repos:
   - hooks:
       - args:
           - --upgrade
-          - --script=script.py
-        files: ^script\.py$
         id: uv-lock
     repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.9.18
@@ -31,15 +29,17 @@ repos:
           - --github--push--tag--major-minor
           - --github--push--tag--major
           - --github--push--tag--latest
+          - --github--push--publish
           - --pre-commit--prettier
           - --pre-commit--ruff
           - --pre-commit--taplo
           - --pre-commit--uv
-          - --pre-commit--uv--script=script.py
+          - --pyproject
+          - --pyproject--project--name=dycw-tag-commit
           - --pyright
-          - --pyright--include=script.py
+          - --pyright--include=src
           - --pytest
-          - --pytest--test-paths=tests
+          - --pytest--test-paths=src/tests
           - --ruff
         id: nitpick
     repo: https://github.com/dycw/pre-commit-hook-nitpick
