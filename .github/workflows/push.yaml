@@ -13,8 +13,8 @@ jobs:
         uses: dycw/action-tag-commit@latest
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          major: true
           major-minor: true
+          major: true
           latest: true
   publish:
     environment:
