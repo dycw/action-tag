@@ -29,6 +29,7 @@ repos:
           - --github--push--tag--major-minor
           - --github--push--tag--major
           - --github--push--tag--latest
+          - --github--push--publish
           - --pre-commit--prettier
           - --pre-commit--ruff
           - --pre-commit--taplo
