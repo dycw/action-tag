@@ -30,6 +30,7 @@ repos:
           - --github--push--tag--major
           - --github--push--tag--latest
           - --github--push--publish
+          - --python-version=3.13
           - --pre-commit--prettier
           - --pre-commit--ruff
           - --pre-commit--taplo

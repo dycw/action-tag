@@ -12,7 +12,7 @@
   description = "Tag the latest commit with the version read from `bump-my-version`"
   name = "dycw-tag-commit"
   readme = "README.md"
-  requires-python = ">= 3.14"
+  requires-python = ">= 3.13"
   version = "0.2.0"
 
   [project.scripts]
