@@ -5,9 +5,8 @@ from logging import getLogger
 from subprocess import CalledProcessError, check_output
 from typing import TYPE_CHECKING
 
-from utilities.version import parse_version
-
 from tag_commits.settings import SETTINGS
+from utilities.version import parse_version
 
 if TYPE_CHECKING:
     from utilities.version import Version

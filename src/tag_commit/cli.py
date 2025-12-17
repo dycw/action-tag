@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 from click import command
-from typed_settings import click_options
-from utilities.click import CONTEXT_SETTINGS_HELP_OPTION_NAMES
-from utilities.logging import basic_config
-
 from tag_commits.lib import tag_commits
 from tag_commits.logging import LOGGER
 from tag_commits.settings import Settings
+from typed_settings import click_options
+from utilities.click import CONTEXT_SETTINGS_HELP_OPTION_NAMES
+from utilities.logging import basic_config
 
 
 @command(**CONTEXT_SETTINGS_HELP_OPTION_NAMES)
