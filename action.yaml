@@ -54,5 +54,5 @@ runs:
         APP_MAJOR: ${{ inputs.major }}
         APP_LATEST: ${{ inputs.latest }}
         APP_DRY_RUN: ${{ inputs.dry-run }}
-      run: uv run --with=dycw-tag-commit --reinstall tag-commit
+      run: uv tool run --from dycw-tag-commit --isolated --reinstall tag-commit
       shell: bash
