@@ -29,21 +29,21 @@ repos:
           - --github--push--publish
           - --github--push--publish--trusted-publishing
           - --github--push--tag
-          - --github--push--tag--major-minor
-          - --github--push--tag--major
           - --github--push--tag--latest
+          - --github--push--tag--major
+          - --github--push--tag--major-minor
           - --package-name=dycw-tag-commit
-          - --python-version=3.13
           - --pre-commit--prettier
           - --pre-commit--ruff
           - --pre-commit--taplo
           - --pre-commit--uv
           - --pyproject
-          - --python-package-name=tag_commit
           - --pyright
           - --pyright--include=src
           - --pytest
           - --pytest--test-paths=src/tests
+          - --python-package-name=tag_commit
+          - --python-version=3.13
           - --readme
           - --repo-name=action-tag-commit
           - --ruff
