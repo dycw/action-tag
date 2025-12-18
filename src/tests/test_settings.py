@@ -8,8 +8,6 @@ from tag_commit.settings import Settings
 
 class TestSettings:
     def test_empty_strs(self) -> None:
-        with temp_environ(TOKEN="", USER_NAME="", USER_EMAIL=""):
+        with temp_environ(TOKEN=""):
             settings = load_settings(Settings, [EnvLoader("")])
         assert settings.token is None
-        assert settings.user_name is None
-        assert settings.user_email is None

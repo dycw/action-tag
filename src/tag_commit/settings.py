@@ -12,12 +12,8 @@ class Settings:
     token: Secret[str] | None = secret(
         default=None, converter=_converter, help="GitHub token"
     )
-    user_name: str = option(
-        default="github-actions-bot", converter=_converter, help="'git' user name"
-    )
-    user_email: str = option(
-        default="noreply@github.com", converter=_converter, help="'git' user email"
-    )
+    user_name: str = option(default="github-actions-bot", help="'git' user name")
+    user_email: str = option(default="noreply@github.com", help="'git' user email")
     major_minor: bool = option(default=False, help="Add the 'major.minor' tag")
     major: bool = option(default=False, help="Add the 'major' tag")
     latest: bool = option(default=False, help="Add the 'latest' tag")
