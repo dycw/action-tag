@@ -21,12 +21,12 @@ def tag_commit(
     LOGGER.info(
         """\
 Running %s with settings:
- - user_name   = %s,
- - user_email  = %s,
- - major_minor = %s,
- - major       = %s,
- - latest      = %s,
- """,
+ - user_name   = %s
+ - user_email  = %s
+ - major_minor = %s
+ - major       = %s
+ - latest      = %s
+""",
         __version__,
         user_name,
         user_email,
