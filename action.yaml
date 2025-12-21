@@ -52,11 +52,11 @@ runs:
     - name: Run 'action tag'
       env:
         TOKEN: ${{ inputs.token }}
+        DRY_RUN: ${{ inputs.dry-run }}
         USER_NAME: ${{ inputs.user-name }}
         USER_EMAIL: ${{ inputs.user-email }}
         MAJOR_MINOR: ${{ inputs.major-minor }}
         MAJOR: ${{ inputs.major }}
         LATEST: ${{ inputs.latest }}
-        DRY_RUN: ${{ inputs.dry-run }}
       run: uv tool run --from dycw-actions --isolated action tag
       shell: bash
