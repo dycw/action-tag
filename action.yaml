@@ -49,7 +49,6 @@ runs:
     - name: Run 'action tag'
       env:
         TOKEN: ${{ inputs.token }}
-        DRY_RUN: ${{ inputs.dry-run }}
         USER_NAME: ${{ inputs.user-name }}
         USER_EMAIL: ${{ inputs.user-email }}
         MAJOR_MINOR: ${{ inputs.major-minor }}
