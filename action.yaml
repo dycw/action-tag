@@ -8,7 +8,7 @@ branding:
 inputs:
   token:
     description: GitHub Personal Access Token
-    default: ${{ github.token }}
+    default: ${{github.token}}
   user-name:
     description: "'git' user name"
     default: github-actions-bot
@@ -48,11 +48,11 @@ runs:
 
     - name: Run 'action tag'
       env:
-        TOKEN: ${{ inputs.token }}
-        USER_NAME: ${{ inputs.user-name }}
-        USER_EMAIL: ${{ inputs.user-email }}
-        MAJOR_MINOR: ${{ inputs.major-minor }}
-        MAJOR: ${{ inputs.major }}
-        LATEST: ${{ inputs.latest }}
+        TOKEN: ${{inputs.token}}
+        USER_NAME: ${{inputs.user-name}}
+        USER_EMAIL: ${{inputs.user-email}}
+        MAJOR_MINOR: ${{inputs.major-minor}}
+        MAJOR: ${{inputs.major}}
+        LATEST: ${{inputs.latest}}
       run: uv tool run --from dycw-actions --isolated action tag
       shell: bash
