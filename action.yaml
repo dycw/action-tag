@@ -6,8 +6,11 @@ branding:
   color: gray-dark
 
 inputs:
-  token:
-    description: GitHub Personal Access Token
+  token-checkout:
+    description: Personal access token (PAT) used to fetch the repository
+    default: ${{github.token}}
+  token-uv:
+    description: Personal access token (PAT) used to download uv
     default: ${{github.token}}
   user-name:
     description: "'git' user name"
@@ -30,9 +33,13 @@ runs:
   steps:
     - name: Check out repo
       uses: actions/checkout@v6
+      with:
+        token: ${{inputs.token-checkout}}
 
     - name: Install 'uv'
       uses: astral-sh/setup-uv@v7
+      with:
+        github-token: ${{inputs.token-uv}}
 
     - name: Install 'bump-my-version'
       run: uv tool install --reinstall bump-my-version
