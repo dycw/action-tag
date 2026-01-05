@@ -12,7 +12,9 @@ jobs:
       - name: Run 'pre-commit'
         uses: dycw/action-pre-commit@latest
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token-checkout: ${{github.token}}
+          token-uv: ${{github.token}}
           repos: |-
             dycw/conformalize
             pre-commit/pre-commit-hooks
+          sleep: 1
