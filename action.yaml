@@ -57,5 +57,10 @@ runs:
         MAJOR_MINOR: ${{inputs.major-minor}}
         MAJOR: ${{inputs.major}}
         LATEST: ${{inputs.latest}}
-      run: uv tool run --from dycw-actions --isolated action tag
+      run: uv tool run --from dycw-actions --isolated action tag \
+        --username ${{inputs.username}} \
+        --password ${{inputs.password}} \
+        --publish-url=${{inputs.publish-url}} \
+        --trusted-publishing=${{inputs.trusted-publishing}} \
+        --native-tls=${{inputs.native-tls}}
       shell: bash
