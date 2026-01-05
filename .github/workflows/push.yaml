@@ -10,7 +10,10 @@ jobs:
       - name: Tag latest commit
         uses: dycw/action-tag@latest
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token-checkout: ${{github.token}}
+          token-uv: ${{github.token}}
+          user-name: github-actions-bot
+          user-email: noreply@github.com
           major-minor: true
           major: true
           latest: true
