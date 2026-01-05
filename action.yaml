@@ -51,16 +51,10 @@ runs:
 
     - name: Run 'action tag'
       env:
-        TOKEN: ${{inputs.token}}
         USER_NAME: ${{inputs.user-name}}
         USER_EMAIL: ${{inputs.user-email}}
         MAJOR_MINOR: ${{inputs.major-minor}}
         MAJOR: ${{inputs.major}}
         LATEST: ${{inputs.latest}}
-      run: uv tool run --from dycw-actions --isolated action tag \
-        --username ${{inputs.username}} \
-        --password ${{inputs.password}} \
-        --publish-url=${{inputs.publish-url}} \
-        --trusted-publishing=${{inputs.trusted-publishing}} \
-        --native-tls=${{inputs.native-tls}}
+      run: uv tool run --from dycw-actions --isolated action tag
       shell: bash
