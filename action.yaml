@@ -1,5 +1,5 @@
 name: tag-commit
-description: Tag latest commit
+description: Tag the latest commit
 
 branding:
   icon: activity
@@ -49,12 +49,12 @@ runs:
       run: uv tool install --reinstall dycw-actions
       shell: bash
 
-    - name: Run 'action tag'
+    - name: Run 'action tag-commit'
       env:
         USER_NAME: ${{inputs.user-name}}
         USER_EMAIL: ${{inputs.user-email}}
         MAJOR_MINOR: ${{inputs.major-minor}}
         MAJOR: ${{inputs.major}}
         LATEST: ${{inputs.latest}}
-      run: uv tool run --from dycw-actions --isolated action tag
+      run: uv tool run --from dycw-actions --isolated action tag-commit
       shell: bash
