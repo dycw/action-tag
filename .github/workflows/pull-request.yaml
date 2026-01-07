@@ -9,12 +9,12 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - name: Run 'pre-commit'
-        uses: dycw/action-pre-commit@latest
+      - if: github.event_name == 'pull_request'
+        name: Run 'pre-commit' hooks
+        uses: dycw/action-run-hooks@latest
         with:
-          token-checkout: ${{github.token}}
-          token-uv: ${{github.token}}
+          token: ${{github.token}}
           repos: |-
-            dycw/conformalize
+            dycw/actions
             pre-commit/pre-commit-hooks
           sleep: 1
