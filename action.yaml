@@ -52,5 +52,5 @@ runs:
         MAJOR_MINOR: ${{inputs.major-minor}}
         MAJOR: ${{inputs.major}}
         LATEST: ${{inputs.latest}}
-      run: uv tool run --from dycw-actions@latest --isolated --resolution highest --prerelease disallow action tag-commit
+      run: uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow cli tag-commit
       shell: bash
