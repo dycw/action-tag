@@ -42,7 +42,7 @@ runs:
         github-token: ${{inputs.token-github}}
 
     - name: Install 'bump-my-version'
-      run: uv tool install --resolution highest --prerelease disallow bump-my-version@latest
+      run: uv tool install --resolution highest --prerelease disallow --managed-python bump-my-version@latest
       shell: bash
 
     - name: Run 'action tag-commit'
@@ -52,5 +52,5 @@ runs:
         MAJOR_MINOR: ${{inputs.major-minor}}
         MAJOR: ${{inputs.major}}
         LATEST: ${{inputs.latest}}
-      run: uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow cli tag-commit
+      run: uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli tag-commit
       shell: bash

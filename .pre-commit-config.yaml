@@ -1,43 +1,79 @@
 repos:
-  - repo: https://github.com/dycw/actions
-    rev: 0.15.0
+  - repo: https://github.com/dycw/pre-commit-hooks
+    rev: 0.14.109
     hooks:
-      - args:
-          - --ci--pull-request--pre-commit
-          - --ci--push--tag
-          - --ci--push--tag--all
+      - id: add-hooks
+        args:
+          - --ci-github
+          - --ci-tag-all
           - --description=Tag latest commit
-          - --pre-commit--prettier
-          - --pre-commit--taplo
-          - --readme
+          - --prettier
           - --repo-name=action-tag
-        id: conformalize-repo
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+          - --toml
+        priority: 10
+      - id: check-versions-consistent
+        priority: 40
+      - id: format-pre-commit-config
+        priority: 30
+      - id: run-prek-autoupdate
+        priority: 10
+      - id: run-version-bump
+        priority: 20
+      - id: setup-bump-my-version
+        priority: 20
+      - id: setup-ci-push
+        args:
+          - --ci-tag-all
+        priority: 20
+      - id: setup-git
+        priority: 20
+      - id: setup-pre-commit
+        priority: 10
+      - id: setup-readme
+        args:
+          - --repo-name=action-tag
+          - --description=Tag latest commit
+        priority: 20
+      - id: update-ci-action-versions
+        priority: 20
+      - id: update-ci-extensions
+        priority: 20
+  - repo: builtin
     hooks:
+      - id: check-added-large-files
+        priority: 40
+      - id: check-case-conflict
+        priority: 40
       - id: check-executables-have-shebangs
+        priority: 40
+      - id: check-json
+        priority: 40
+      - id: check-json5
+        priority: 40
       - id: check-merge-conflict
+        priority: 40
       - id: check-symlinks
-      - id: destroyed-symlinks
+        priority: 40
+      - id: check-toml
+        priority: 40
+      - id: check-xml
+        priority: 40
+      - id: check-yaml
+        priority: 40
       - id: detect-private-key
+        priority: 40
       - id: end-of-file-fixer
+        priority: 20
+      - id: fix-byte-order-marker
+        priority: 20
       - id: mixed-line-ending
         args:
           - --fix=lf
+        priority: 20
       - id: no-commit-to-branch
-      - id: pretty-format-json
-        args:
-          - --autofix
+        priority: 40
       - id: trailing-whitespace
-  - repo: local
-    hooks:
-      - id: prettier
-        name: prettier
-        entry: npx prettier --write
-        language: system
-        types_or:
-          - markdown
-          - yaml
+        priority: 20
   - repo: https://github.com/compwa/taplo-pre-commit
     rev: v0.9.3
     hooks:
@@ -49,3 +85,25 @@ repos:
           - indent_entries=true
           - --option
           - reorder_keys=true
+        priority: 40
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-illegal-windows-names
+        priority: 40
+      - id: destroyed-symlinks
+        priority: 40
+      - id: pretty-format-json
+        args:
+          - --autofix
+        priority: 20
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npx prettier --write
+        language: unsupported
+        types_or:
+          - markdown
+          - yaml
+        priority: 30
