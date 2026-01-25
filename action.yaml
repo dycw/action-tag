@@ -20,13 +20,13 @@ inputs:
     default: noreply@github.com
   major-minor:
     description: Add the 'major.minor' tag
-    default: false
+    default:
   major:
     description: Add the 'major' tag
-    default: false
+    default:
   latest:
     description: Add the 'latest' tag
-    default: false
+    default:
 
 runs:
   using: composite
@@ -46,11 +46,31 @@ runs:
       shell: bash
 
     - name: Run 'action tag-commit'
-      env:
-        USER_NAME: ${{inputs.user-name}}
-        USER_EMAIL: ${{inputs.user-email}}
-        MAJOR_MINOR: ${{inputs.major-minor}}
-        MAJOR: ${{inputs.major}}
-        LATEST: ${{inputs.latest}}
-      run: uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli tag-commit
+      run: |
+        set -euo pipefail
+        args=(uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli tag-commit)
+        user_name="${{inputs.user-name}}"
+        if [[ "${user_name,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
+          args+=(--user-name "${user_name}")
+        fi
+        user_email="${{inputs.user-email}}"
+        if [[ "${user_email,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
+          args+=(--user-email "${{inputs.user-email}}")
+        fi
+        major_minor="${{inputs.major-minor}}"
+        if [[ "${major_minor,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
+          args+=(--major-minor)
+        fi
+        major="${{inputs.major}}"
+        if [[ "${major,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
+          args+=(--major)
+        fi
+        latest="${{inputs.latest}}"
+        if [[ "${latest,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
+          args+=(--latest)
+        fi
+        echo "[$(date +'%Y-%m-%d %H:%M:%S')] Running:"
+        printf '%q ' "${args[@]}"
+        echo
+        "${args[@]}"
       shell: bash
