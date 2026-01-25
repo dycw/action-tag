@@ -50,11 +50,11 @@ runs:
         set -euo pipefail
         args=(uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli tag-commit)
         user_name="${{inputs.user-name}}"
-        if [[ "${user_name,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
+        if [[ -n "${user_name}" ]]; then
           args+=(--user-name "${user_name}")
         fi
         user_email="${{inputs.user-email}}"
-        if [[ "${user_email,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
+        if [[ -n "${user_email}" ]]; then
           args+=(--user-email "${user_email}")
         fi
         major_minor="${{inputs.major-minor}}"
