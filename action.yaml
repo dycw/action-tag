@@ -20,13 +20,13 @@ inputs:
     default: noreply@github.com
   major-minor:
     description: Add the 'major.minor' tag
-    default:
+    default: false
   major:
     description: Add the 'major' tag
-    default:
+    default: false
   latest:
     description: Add the 'latest' tag
-    default:
+    default: false
 
 runs:
   using: composite
@@ -55,7 +55,7 @@ runs:
         fi
         user_email="${{inputs.user-email}}"
         if [[ "${user_email,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
-          args+=(--user-email "${{inputs.user-email}}")
+          args+=(--user-email "${user_email}")
         fi
         major_minor="${{inputs.major-minor}}"
         if [[ "${major_minor,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
