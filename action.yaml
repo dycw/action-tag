@@ -20,13 +20,13 @@ inputs:
     default: noreply@github.com
   major-minor:
     description: Add the 'major.minor' tag
-    default: false
+    default:
   major:
     description: Add the 'major' tag
-    default: false
+    default:
   latest:
     description: Add the 'latest' tag
-    default: false
+    default:
 
 runs:
   using: composite
@@ -46,11 +46,26 @@ runs:
       shell: bash
 
     - name: Run 'action tag-commit'
-      env:
-        USER_NAME: ${{inputs.user-name}}
-        USER_EMAIL: ${{inputs.user-email}}
-        MAJOR_MINOR: ${{inputs.major-minor}}
-        MAJOR: ${{inputs.major}}
-        LATEST: ${{inputs.latest}}
-      run: uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli tag-commit
+      run: |
+        set -euo pipefail
+        args=(uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli tag-commit)
+        if [ -n "${{inputs.user-name}}" ]; then
+          args+=(--user-name "${{inputs.user-name}}")
+        fi
+        if [ -n "${{inputs.user-email}}" ]; then
+          args+=(--user-email "${{inputs.user-email}}")
+        fi
+        if [ -n "${{inputs.major-minor}}" ]; then
+          args+=(--major-minor)
+        fi
+        if [ -n "${{inputs.major}}" ]; then
+          args+=(--major)
+        fi
+        if [ -n "${{inputs.latest}}" ]; then
+          args+=(--latest)
+        fi
+        echo "[$(date +'%Y-%m-%d %H:%M:%S')] Running:"
+        printf '%q ' "${args[@]}"
+        echo
+        "${args[@]}"
       shell: bash
