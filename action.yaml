@@ -59,16 +59,16 @@ runs:
           args+=(--user-email "${user_email}")
         fi
         major_minor="${{inputs.major-minor}}"
-        if [[ "${major_minor,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
-          args+=(--major-minor)
+        if [[ "${major_minor}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
+          args+=(--native-tls)
         fi
         major="${{inputs.major}}"
-        if [[ "${major,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
-          args+=(--major)
+        if [[ "${major}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
+          args+=(--native-tls)
         fi
         latest="${{inputs.latest}}"
-        if [[ "${latest,,}" =~ ^(true|1|yes|on|t|y)$ ]]; then
-          args+=(--latest)
+        if [[ "${latest}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
+          args+=(--native-tls)
         fi
         echo "[$(date +'%Y-%m-%d %H:%M:%S')] Running:"
         printf '%q ' "${args[@]}"
