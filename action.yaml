@@ -49,7 +49,7 @@ runs:
     - name: Run 'action tag-commit'
       run: |
         set -euo pipefail
-        args=(uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python cli tag-commit)
+        args=(uv tool run --from dycw-actions[cli]@latest --isolated --resolution highest --prerelease disallow --managed-python tag-commit)
         user_name="${{inputs.user-name}}"
         if [[ -n "${user_name}" ]]; then
           args+=(--user-name "${user_name}")
