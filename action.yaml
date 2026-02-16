@@ -60,15 +60,15 @@ runs:
         fi
         major_minor="${{inputs.major-minor}}"
         if [[ "${major_minor}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
-          args+=(--native-tls)
+          args+=(--major-minor)
         fi
         major="${{inputs.major}}"
         if [[ "${major}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
-          args+=(--native-tls)
+          args+=(--major)
         fi
         latest="${{inputs.latest}}"
         if [[ "${latest}" =~ ^[Tt][Rr][Uu][Ee]$ ]]; then
-          args+=(--native-tls)
+          args+=(--latest)
         fi
         echo "[$(date +'%Y-%m-%d %H:%M:%S')] Running:"
         printf '%q ' "${args[@]}"
